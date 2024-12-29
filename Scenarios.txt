@@ -1,0 +1,72 @@
+Player:
+- Roll Dice
+- Buy
+- Sell properties
+- Sell houses
+- Mortgage
+
+Slot:
+- Do nothing (free park)
+- Do something (can be one or more)
+	- Move to another slot
+	- Give money
+	- Withdraw money
+
+
+Monopoly mechanics :
+- Ability to buy properties
+- Ability to sell properties
+- Ability to mortgage properties 
+- Ability to build houses on properties (if all properties of the same group/color)
+
+
+- If a player falls on a slot that belongs to another player
+	- If the property is mortgaged, turn ends
+	- The player falling on the slot has to pay a "rent"
+		- This rent can vary based on the number of houses of the property
+		- This rent can double if the player owns all the properties of the same group and there is no house on these properties
+	- If the player can't pay, he has to sell
+- If a player falls on a card slot
+	- The player suffers/get reward from the effects of the card
+	- If the player can't pay the effects, he has to sell
+- If a player falls on a prison slot
+	- He gets immobilized
+	- Each turn, the player has the opportunity to
+		- Pay the bank to get out, allowing him to play the same turn
+		- Roll the dice and
+			- Get a double, forcing him to freely get out of prison and play the rolled amount
+			- Not get a double, wasting a turn
+		- Use a "Get out of prison" card, allowing him to play on the same turn
+	- Upon reaching 3 turns of immobilization, the player is forced to leave
+- If a player falls on a taxes slot
+	- He is forced to give the taxes (amount can vary)
+	- If the player can't pay, he has to sell
+- If a player falls on a slot that can be bought
+	- If the player has enough money to buy it, he can buy it, otherwise, turn ends
+	- If the player wishes to buy it
+		- The money gets deduced
+		- He receives a card, proving he owns the property
+	- If the player doesn't want to buy it, turn ends
+- If a player falls on a slot that belongs to him
+	- If the slot is grouped
+		- If the group allows to build houses
+			- If he has enough money to buy one house on one property
+				- He can choose whether or not he wants to buy one or multiple house on the given property
+				- If he wants to buy a house
+					- He can choose to buy a certain amount of houses, based on the amount of money he has
+						- If he can afford 2 and the property allows for 4, he can buy 2
+						- If he can afford 2 and the property allows for 1, he can buy 1
+					- He buys the houses
+					- Turn ends
+				- If he doesn't want to buy a house, turn ends
+			- If he doesn't have enough money to buy one house on one property, turn ends
+		- If the group doesn't allow to build houses, turn ends
+- If a player can't afford something he has to pay
+	- If he can sell houses
+		- He can choose one or multiple properties to remove houses from
+	- If he can sell properties
+		- He can choose one or multiple properties to mortagage or sell
+	- If he can sell cards
+		- He can sell this card to a player
+		- If said player(s) refuse to buy the card, the card stays in the player's hand
+	- If, given the steps before, he still can't pay, the player loses and is out of the game 
