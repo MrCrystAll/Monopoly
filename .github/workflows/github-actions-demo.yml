@@ -9,13 +9,13 @@ jobs:
       - uses: actions/checkout@master
       - uses: seanmiddleditch/gha-setup-ninja@master
         
-      - name: Build
+      - name: Generate build files
         run: |
             mkdir build
               cd build
               cmake -G Ninja ..
 
-      - name: Move files to build directory
+      - name: Build
         run: cmake --build build
 
   tests:
@@ -24,7 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Run tests
-        run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
+        run: ls
+      - run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v5
