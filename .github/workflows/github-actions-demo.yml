@@ -22,7 +22,7 @@ jobs:
         run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
 
       - name: List
-        run: ls -l
+        run: ls -l MonopolyTests
 
 
       - name: Publish Test Report
