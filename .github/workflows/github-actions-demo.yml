@@ -19,11 +19,10 @@ jobs:
         run: cmake --build build
 
       - name: Run tests
-        run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
+        run: ctest --output-junit build/test-results/test/TEST-slot.xml
 
       - name: List
-        run: ls -l MonopolyTests
-
+        run: ls -l
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v5
