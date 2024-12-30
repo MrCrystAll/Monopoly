@@ -17,3 +17,4 @@ MonopolyCPP/Debug
 MonopolyCPP/*.dir
 
 *.tcl
+Testing/

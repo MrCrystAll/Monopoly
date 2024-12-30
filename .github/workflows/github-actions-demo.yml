@@ -8,9 +8,25 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: seanmiddleditch/gha-setup-ninja@master
-      - run: |
-          mkdir build
-            cd build
-            cmake -G Ninja ..
-      - run: cmake --build build
+        
+      - name: Build
+        run: |
+            mkdir build
+              cd build
+              cmake -G Ninja ..
+            cmake --build build
+
+  tests:
+    needs: [build]
+    name: Tests
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Run tests
+        run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
+
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v5
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
       

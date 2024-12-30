@@ -57,7 +57,9 @@ list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
 include(CTest)
 include(Catch)
-CATCH_DISCOVER_TESTS(MonopolyTests)
+CATCH_DISCOVER_TESTS(MonopolyTests REPORTER JUnit)
+
+enable_testing()
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET MonopolyTests PROPERTY CXX_STANDARD 20)
