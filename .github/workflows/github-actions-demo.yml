@@ -8,6 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: seanmiddleditch/gha-setup-ninja@master
-      - run: mkdir build & cd build & cmake -G Ninja .
+      - run: |
+          mkdir build
+            cd build
+            cmake -G Ninja ..
       - run: cmake --build build
       
