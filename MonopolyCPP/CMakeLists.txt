@@ -42,7 +42,7 @@ file(GLOB_RECURSE all_SRCS
 # Add source to this project's executable.
 add_library (MonopolyCPP ${all_SRCS})
 
-target_link_libraries(MonopolyCPP PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(MonopolyCPP PUBLIC nlohmann_json::nlohmann_json)
 
 target_include_directories(MonopolyCPP PUBLIC "${PROJECT_SOURCE_DIR}/MonopolyCPP/include")
 

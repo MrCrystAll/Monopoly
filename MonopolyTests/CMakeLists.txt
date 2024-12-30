@@ -53,6 +53,12 @@ target_link_libraries(MonopolyTests PUBLIC Catch2::Catch2WithMain)
 target_include_directories(MonopolyTests PUBLIC "${PROJECT_SOURCE_DIR}/../MonopolyCPP/include")
 target_include_directories(MonopolyTests PUBLIC "${PROJECT_SOURCE_DIR}/MonopolyTests/include")
 
+list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
+
+include(CTest)
+include(Catch)
+CATCH_DISCOVER_TESTS(MonopolyTests)
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET MonopolyTests PROPERTY CXX_STANDARD 20)
 endif()

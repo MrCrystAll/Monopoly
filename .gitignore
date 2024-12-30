@@ -15,3 +15,5 @@ MonopolyCPP.sln
 MonopolyCPP/Debug
 
 MonopolyCPP/*.dir
+
+*.tcl
