@@ -27,8 +27,6 @@ function(GroupSourcesByFolder target)
   endif()
 endfunction()
 
-message("Test ${PROJECT_SOURCE_DIR}")
-
 include(FetchContent)
 
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
@@ -42,7 +40,7 @@ file(GLOB_RECURSE all_SRCS
         )
 
 # Add source to this project's executable.
-add_executable (MonopolyCPP ${all_SRCS})
+add_library (MonopolyCPP ${all_SRCS})
 
 target_link_libraries(MonopolyCPP PRIVATE nlohmann_json::nlohmann_json)
 
@@ -51,5 +49,7 @@ target_include_directories(MonopolyCPP PUBLIC "${PROJECT_SOURCE_DIR}/MonopolyCPP
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET MonopolyCPP PROPERTY CXX_STANDARD 20)
 endif()
+
+GroupSourcesByFolder(MonopolyCPP)
 
 # TODO: Add tests and install targets if needed.
