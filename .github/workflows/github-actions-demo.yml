@@ -18,14 +18,12 @@ jobs:
       - name: Build
         run: cmake --build build
 
-  tests:
-    needs: [build]
-    name: Tests
-    runs-on: ubuntu-latest
-    steps: 
       - name: Run tests
-        run: ls
-      - run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
+        run: ctest --test-dir MonopolyTests --output-junit build/test-results/test/TEST-slot.xml
+
+      - name: List
+        run: ls -l
+
 
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v5
