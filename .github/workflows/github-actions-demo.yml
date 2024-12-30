@@ -1,6 +1,9 @@
 name: Monopoly Tests
 run-name: Build and Test
 on: [push]
+permissions:
+  checks: write
+  pull-requests: write
 jobs:
   build:
     name: Setup
