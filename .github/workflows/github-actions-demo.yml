@@ -18,8 +18,10 @@ jobs:
       - name: Build
         run: cmake --build build
 
-      - name: Run tests
-        run: ctest --output-junit build/test-results/test/TEST-slot.xml
+      - name: Test Project
+        uses: threeal/ctest-action@v1.1.0
+        with:
+          args: --output-junit build/test-results/test/TEST-slot.xml
 
       - name: List
         run: ls -l
