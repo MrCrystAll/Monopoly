@@ -45,7 +45,6 @@ file(GLOB_RECURSE all_headers
 SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 add_library(MonopolyCPP STATIC ${all_SRCS} ${all_headers})
-add_library(MonopolyCPP_Shared SHARED ${all_SRCS} ${all_headers})
 
 target_link_libraries(MonopolyCPP PUBLIC nlohmann_json::nlohmann_json)
 
