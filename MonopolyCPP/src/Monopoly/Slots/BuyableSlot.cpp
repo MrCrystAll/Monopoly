@@ -4,6 +4,10 @@ BuyableSlot::BuyableSlot(std::string name, int buyPrice): Slot(name), buyPrice(b
 {
 }
 
+BuyableSlot::BuyableSlot(Slot* slot, int buyPrice): BuyableSlot(slot->GetName(), buyPrice)
+{
+}
+
 bool BuyableSlot::CanBuy() const
 {
 	return true;

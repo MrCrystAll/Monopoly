@@ -7,6 +7,7 @@
 class BuildableSlot : public RentableSlot {
 public:
 	BuildableSlot(std::string name, int buyPrice, int baseRent, int mortgageValue, int maxHouses, int pricePerHouse);
+	BuildableSlot(RentableSlot* rentableSlot, int maxHouses, int pricePerHouse);
 
 	#pragma region Rent
 

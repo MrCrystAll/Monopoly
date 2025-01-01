@@ -17,6 +17,9 @@ BuildableSlot::BuildableSlot(std::string name, int buyPrice, int baseRent, int m
 	this->maxHouses = maxHouses;
 }
 
+BuildableSlot::BuildableSlot(RentableSlot* rentableSlot, int maxHouses, int pricePerHouse): 
+	BuildableSlot(rentableSlot->GetName(), rentableSlot->GetBuyPrice(), rentableSlot->GetRent(), rentableSlot->GetMortgageValue(), maxHouses, pricePerHouse) {}
+
 int BuildableSlot::GetMaxHouses() const
 {
 	return this->maxHouses;

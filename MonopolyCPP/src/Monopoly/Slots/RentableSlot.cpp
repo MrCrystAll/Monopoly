@@ -5,6 +5,10 @@ RentableSlot::RentableSlot(std::string name, int buyPrice, int baseRent, int mor
 	this->isMortgaged = false;
 }
 
+RentableSlot::RentableSlot(BuyableSlot* buyableSlot, int baseRent, int mortgageValue): RentableSlot(buyableSlot->GetName(), buyableSlot->GetBuyPrice(), baseRent, mortgageValue)
+{
+}
+
 
 bool RentableSlot::CanRent() const
 {

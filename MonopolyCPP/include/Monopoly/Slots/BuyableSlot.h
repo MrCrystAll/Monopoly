@@ -5,6 +5,7 @@
 class BuyableSlot : public Slot {
 public:
 	BuyableSlot(std::string name, int buyPrice);
+	BuyableSlot(Slot* slot, int buyPrice);
 
 	#pragma region Stats
 

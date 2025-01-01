@@ -5,6 +5,7 @@
 class RentableSlot : public BuyableSlot {
 public:
 	RentableSlot(std::string name, int buyPrice, int baseRent, int mortgageValue);
+	RentableSlot(BuyableSlot* buyableSlot, int baseRent, int mortgageValue);
 
 	#pragma region Rent
 

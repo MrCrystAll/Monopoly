@@ -33,14 +33,19 @@ FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download
 FetchContent_MakeAvailable(json)
 
 file(GLOB_RECURSE all_SRCS
-        "${PROJECT_SOURCE_DIR}/MonopolyCPP/include/Monopoly/*.h"
-        "${PROJECT_SOURCE_DIR}/MonopolyCPP/include/Monopoly/*.hpp"
         "${PROJECT_SOURCE_DIR}/MonopolyCPP/src/Monopoly/*.cpp"
         "${PROJECT_SOURCE_DIR}/MonopolyCPP/src/Monopoly/*.c"
         )
 
-# Add source to this project's executable.
-add_library (MonopolyCPP ${all_SRCS})
+file(GLOB_RECURSE all_headers
+        "${PROJECT_SOURCE_DIR}/MonopolyCPP/include/Monopoly/*.h"
+        "${PROJECT_SOURCE_DIR}/MonopolyCPP/include/Monopoly/*.hpp"
+)
+
+SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+add_library(MonopolyCPP STATIC ${all_SRCS} ${all_headers})
+add_library(MonopolyCPP_Shared SHARED ${all_SRCS} ${all_headers})
 
 target_link_libraries(MonopolyCPP PUBLIC nlohmann_json::nlohmann_json)
 
