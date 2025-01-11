@@ -13,6 +13,13 @@ TEST_CASE("Slot functions outputs the correct result", SLOT_TAG) {
 		CHECK(not s->IsGo());
 	}
 
+	GoSlot* goSlot = new GoSlot(s);
+
+	SECTION("Go values") {
+		CHECK(goSlot->IsGo());
+		CHECK(goSlot->GetName() == "A slot");
+	}
+
 	BuyableSlot* bSlot = new BuyableSlot(s, 150);
 
 	SECTION("Buyable slot values") {
