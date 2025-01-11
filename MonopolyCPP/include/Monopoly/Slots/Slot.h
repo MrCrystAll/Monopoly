@@ -67,6 +67,13 @@ public:
 
 	#pragma endregion
 
+	#pragma region GO
+
+	virtual bool IsGo() const;
+
+	#pragma endregion
+
+
 	#pragma region Utils
 
 	virtual Slot* Copy() const;
