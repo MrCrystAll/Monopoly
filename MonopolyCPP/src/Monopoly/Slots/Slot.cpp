@@ -89,6 +89,11 @@ bool Slot::IsMortgaged() const
 	return false;
 }
 
+bool Slot::IsGo() const
+{
+	return false;
+}
+
 int Slot::GetMaxHouses() const
 {
 	return 0;

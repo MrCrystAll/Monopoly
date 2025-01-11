@@ -10,6 +10,7 @@ TEST_CASE("Slot functions outputs the correct result", SLOT_TAG) {
 		CHECK(not s->CanBuild());
 		CHECK(not s->CanLift());
 		CHECK(not s->CanMortgage());
+		CHECK(not s->IsGo());
 	}
 
 	BuyableSlot* bSlot = new BuyableSlot(s, 150);
