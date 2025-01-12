@@ -21,7 +21,10 @@ jobs:
       - name: Cache
         uses: actions/cache@v4
         with:
-          path: build/_deps
+          path: |
+            build/_deps
+            build/CMakeCache.txt
+            build/CMakeFiles
           key: ${{ runner.os }}-deps
 
       - name: Build
