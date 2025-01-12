@@ -19,7 +19,7 @@ jobs:
               cmake -G Ninja ..
 
       - name: Cache
-        uses: actions/cache
+        uses: actions/cache@v4
         with:
           path: _deps
           key: ${{ runner.os }}-${{ hashFiles('**/_deps') }}
