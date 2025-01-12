@@ -18,12 +18,12 @@ jobs:
               cd build
               cmake -G Ninja ..
 
-      - name: Set up cache
+      - name: Cache
         uses: actions/cache@v4
         with:
-          path: _deps
-          key: ${{ runner.os }}.tests.${{ hashFiles('**/') }}
-          restore-keys: ${{ runner.os }}.tests.
+          path: |
+            _deps
+          key: ${{ runner.os }}-cache-${{ hashFiles('**/lockfiles') }}
 
       - name: Build
         run: cmake --build build
@@ -38,4 +38,5 @@ jobs:
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
+
       
