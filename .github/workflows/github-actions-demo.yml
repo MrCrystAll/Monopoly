@@ -17,13 +17,12 @@ jobs:
             mkdir build
               cd build
               cmake -G Ninja ..
-
-      - name: Cache
-        uses: actions/cache@v4
+      - name: Load cache
+        uses: actions/cache/restore@v4
+        id: cache_load
         with:
-          path: |
-            _deps
-          key: ${{ runner.os }}-cache-${{ hashFiles('**/lockfiles') }}
+          path: _deps
+          key: ${{ runner.os }}-${{ hashFiles('**/') }}
 
       - name: Build
         run: cmake --build build
@@ -39,4 +38,9 @@ jobs:
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
 
-      
+      - name: Save cache
+        uses: actions/cache/save@v4
+        id: cache_save
+        with:
+          path: _deps
+          key: ${{ runner.os }}-${{ hashFiles('**/') }}
