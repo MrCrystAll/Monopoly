@@ -2,3 +2,4 @@ Debug/
 CMakeFiles/
 *.dir
 build/
+*.json

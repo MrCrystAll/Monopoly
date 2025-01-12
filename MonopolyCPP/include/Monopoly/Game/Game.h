@@ -5,17 +5,21 @@
 #include <Monopoly/Interactions/PlayerPropertyInteraction.h>
 #include <nlohmann/json.hpp>
 
+#include <Monopoly/Game/GameSetup.h>
+#include <Monopoly/Game/GameStatus.h>
+
 using json = nlohmann::json;
 
 class Game {
 public:
-	Game(int nPlayers);
+	Game(GameSetup& setup);
 
 	void Start();
-
-private:
 	bool Turn();
 	bool PlayerTurn(Player& p, Report& r);
+
+private:
+	void Init(GameSetup& setup);
 	void PlayerSummary(Player p);
 	std::vector<Slot*> GetPropertiesOf(PlayerStamp p) const;
 	GameStatus* status;

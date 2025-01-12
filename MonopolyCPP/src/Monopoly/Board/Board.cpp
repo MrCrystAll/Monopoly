@@ -1,4 +1,4 @@
-#include <Monopoly/Board.h>
+#include <Monopoly/Board/Board.h>
 #include <iostream>
 //#include <Monopoly/Groups/Group.h>
 
@@ -7,8 +7,8 @@ Board::Board(int n_slots)
 	this->n_slots = n_slots;
 	this->slots = std::vector<Slot*>(n_slots);
 
-	this->slots[0] = new Slot("Start");
-	this->slots[1] = new BuildableSlot("Mediterranean Avenue", 60, 2, 50, 5, 50);
+	this->slots[0] = new GoSlot("Start");
+	this->slots[1] = new BuildableSlot("Mediterranean Avenue", 70, 2, 50, 5, 50);
 	this->slots[2] = new Slot("Community");
 	this->slots[3] = new BuildableSlot("Baltic Avenue", 60, 4, 50, 5, 50);
 	this->slots[4] = new Slot("Taxes");

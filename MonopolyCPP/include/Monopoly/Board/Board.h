@@ -5,6 +5,7 @@
 #include <Monopoly/Slots/BuyableSlot.h>
 #include <Monopoly/Slots/RentableSlot.h>
 #include <Monopoly/Slots/BuildableSlot.h>
+#include <Monopoly/Slots/GoSlot.h>
 
 #include <Monopoly/Groups/Group.h>
 #include <Monopoly/Groups/ColoredGroup.h>

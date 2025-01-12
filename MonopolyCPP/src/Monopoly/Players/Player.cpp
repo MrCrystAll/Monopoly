@@ -6,7 +6,7 @@ Player::Player(PlayerStamp stamp, int defaultMoney): stamp(stamp), money(default
 	this->isInPrison = false;
 }
 
-const DiceResult Player::Roll()
+DiceResult Player::Roll() const
 {
 	int dice1 = Random(1, 7);
 	int dice2 = Random(1, 7);
@@ -16,7 +16,7 @@ const DiceResult Player::Roll()
 	return { dice1 + dice2, d };
 }
 
-const int Player::Ask(std::vector<Choice> choices, std::string question)
+int Player::Ask(std::vector<Choice> choices, std::string question) const
 {
 	/*if (not question.empty()) {
 		LOG(question);

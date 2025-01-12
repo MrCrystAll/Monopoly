@@ -11,12 +11,25 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: seanmiddleditch/gha-setup-ninja@master
+
+      - run: |
+          mkdir build
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/_deps
+            build/CMakeCache.txt
+            build/CMakeFiles
+          key: ${{ runner.os }}-cmake-deps-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-cmake-deps-
         
       - name: Generate build files
         run: |
-            mkdir build
               cd build
-              cmake -G Ninja ..
+              cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
 
       - name: Build
         run: cmake --build build
@@ -31,4 +44,3 @@ jobs:
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
-      

@@ -3,7 +3,7 @@
 #include <string>
 #include <Monopoly/Players/Player.h>
 #include <Monopoly/Slots/Slot.h>
-#include <Monopoly/GameStatus.h>
+#include <Monopoly/Game/GameStatus.h>
 #include <Monopoly/Logging/Report.h>
 #include <Monopoly/Groups/Group.h>
 
@@ -31,6 +31,7 @@ private:
 	const void Build(Player& pl, Slot* s, Group* g, Report& report);
 	const void Lift(Player& pl, Slot* s, Group* g, Report& report);
 	const void Pay(Player& pl, Slot* s, Group* g, Report& report);
+	const void Go(Player& pl, Slot* s, Report& report);
 
 	GameStatus* status;
 };

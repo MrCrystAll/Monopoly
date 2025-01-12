@@ -17,8 +17,8 @@ public:
 	Player() = default;
 	Player(PlayerStamp stamp, int defaultMoney = 2000);
 
-	virtual const DiceResult Roll();
-	virtual const int Ask(std::vector<Choice> choices, std::string question = "");
+	virtual DiceResult Roll() const;
+	virtual int Ask(std::vector<Choice> choices, std::string question = "") const;
 
 	virtual void AddMoney(int money);
 	virtual void WithdrawMoney(int money);
