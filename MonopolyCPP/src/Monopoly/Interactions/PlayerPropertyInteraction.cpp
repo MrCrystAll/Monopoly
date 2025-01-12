@@ -10,6 +10,11 @@ void PlayerPropertyInteraction::Interact(Player& pl, Slot* s, Group* g, Report& 
 	std::vector<PlayerPropertyInteraction::Interactions> interactions = this->GetInteractions(pl, s);
 	std::vector<Choice> choices = {};
 
+	if (s->IsGo()) {
+		this->Go(pl, s, report);
+		return;
+	}
+
 	if (interactions.size() == 0) return;
 	int choice = 0;
 
@@ -243,6 +248,12 @@ const void PlayerPropertyInteraction::Pay(Player& pl, Slot* s, Group* g, Report&
 			LOG(pl.GetStamp() << " paid " << rent << " to " << p->GetStamp() << " on " << s->GetName());
 		}
 	}
+}
+
+const void PlayerPropertyInteraction::Go(Player& pl, Slot* s, Report& report)
+{
+	pl.AddMoney(200);
+	LOG(pl.GetStamp() << " received 200 from GO");
 }
 
 std::ostream& operator<<(std::ostream& stream, PlayerPropertyInteraction::Interactions interaction)

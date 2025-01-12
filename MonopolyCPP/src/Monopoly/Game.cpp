@@ -2,27 +2,9 @@
 #include <iostream>
 #include <fstream>
 
-Game::Game(int nPlayers)
+Game::Game(GameSetup& setup)
 {
-	std::vector<Player*> players = std::vector<Player*>();
-	for (uint8_t i = 0; i < nPlayers; i++) {
-		players.push_back(new Player(i));
-	}
-	Board* board = new Board(39);
-	std::ofstream json_result;
-	LOG("Write board to json...");
-	json_result.open("board.json");
-
-	json j = *board;
-
-	json_result << j.dump(4);
-	json_result.close();
-	LOG("Json saved!");
-
-
-	this->status = new GameStatus(players, board);
-
-	this->ppInteraction = PlayerPropertyInteraction(this->status);
+	this->Init(setup);
 }
 
 void Game::Start()
@@ -52,15 +34,35 @@ void Game::Start()
 
 }
 
-bool Game::Turn()
+void Game::Init(GameSetup& setup)
+{
+	Board* board = new Board(39);
+	this->status = new GameStatus(setup.GetPlayers(), board);
+	this->status->SetRunInteractions(setup.GetRunInteractions());
+	this->ppInteraction = PlayerPropertyInteraction(this->status);
+
+	std::ofstream json_result;
+	LOG("Write board to json...");
+	json_result.open("board.json");
+
+	json j = *board;
+
+	json_result << j.dump(4);
+	json_result.close();
+	LOG("Json saved!");
+}
+
+bool Game::Turn(int verbose)
 {
 
 	Report report = {};
 
-	//Display turn
-	for (const Player* p : this->status->GetPlayers()) {
-		if (p->IsOut()) continue;
-		this->PlayerSummary(*p);
+	if (verbose > 0) {
+		//Display turn
+		for (const Player* p : this->status->GetPlayers()) {
+			if (p->IsOut()) continue;
+			this->PlayerSummary(*p);
+		}
 	}
 
 	//Oooooo, the turn is heeeeeeeeeeeeeeeeeeeere
@@ -111,11 +113,9 @@ bool Game::PlayerTurn(Player& p, Report& r)
 		currentSlot = this->status->GetBoard()->GetSlotAt(p.GetPosition());
 		Group* g = this->status->GetBoard()->GetGroupOf(currentSlot);
 
-		this->ppInteraction.Interact(p, currentSlot, g, r);
+		if(this->status->GetRunInteractions()) this->ppInteraction.Interact(p, currentSlot, g, r);
 
 		if (p.IsOut()) return false;
-
-		//TODO: Interact with the board
 	}
 
 	//LOG("Player " << (int)p.GetStamp() << ": " << oldPosition << " -> " << p.GetPosition() << ". Current slot: " << currentSlot->GetName() << " | Money: " << p.GetMoney());

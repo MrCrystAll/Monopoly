@@ -31,6 +31,7 @@ private:
 	const void Build(Player& pl, Slot* s, Group* g, Report& report);
 	const void Lift(Player& pl, Slot* s, Group* g, Report& report);
 	const void Pay(Player& pl, Slot* s, Group* g, Report& report);
+	const void Go(Player& pl, Slot* s, Report& report);
 
 	GameStatus* status;
 };

@@ -9,13 +9,14 @@ using json = nlohmann::json;
 
 class Game {
 public:
-	Game(int nPlayers);
+	Game(GameSetup& setup);
 
 	void Start();
+	bool Turn(int verbose = 0);
+	bool PlayerTurn(Player& p, Report& r);
 
 private:
-	bool Turn();
-	bool PlayerTurn(Player& p, Report& r);
+	void Init(GameSetup& setup);
 	void PlayerSummary(Player p);
 	std::vector<Slot*> GetPropertiesOf(PlayerStamp p) const;
 	GameStatus* status;
