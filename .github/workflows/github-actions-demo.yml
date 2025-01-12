@@ -29,10 +29,10 @@ jobs:
       - name: Generate build files
         run: |
               cd build
-              cmake -G Ninja ..
+              cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
 
       - name: Build
-        run: cmake --build build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+        run: cmake --build build
 
       - name: Test Project
         uses: threeal/ctest-action@v1.1.0
