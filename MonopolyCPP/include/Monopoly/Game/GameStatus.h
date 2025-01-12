@@ -5,10 +5,11 @@
 #include <Monopoly/Players/Player.h>
 #include <Monopoly/Models/TurnStatus.h>
 #include <Monopoly/Board/Board.h>
+#include <Monopoly/Game/GameSetup.h>
 
 class GameStatus {
 public:
-	GameStatus(std::vector<Player*> players, Board* board);
+	GameStatus(GameSetup& setup, Board* board);
 
 	bool IsFinished() const;
 	std::vector<Player*> GetPlayers() const;
@@ -21,13 +22,15 @@ public:
 	bool GetRunInteractions() const;
 	void SetRunInteractions(bool runInteractions);
 
+	int GetVerbose() const;
+	void SetVerbose(int verbose);
+
 private:
 
 	bool finished = false;
-	bool runInteractions = true;
-	std::vector<Player*> players = {};
 	std::map<Player*, int> dead = {};
 	TurnStatus* turnStatus;
+	GameSetup& setup;
 	Board* board;
 	int nTurns = 0;
 };

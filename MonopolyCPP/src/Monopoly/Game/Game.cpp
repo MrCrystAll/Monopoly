@@ -37,7 +37,7 @@ void Game::Start()
 void Game::Init(GameSetup& setup)
 {
 	Board* board = new Board(39);
-	this->status = new GameStatus(setup.GetPlayers(), board);
+	this->status = new GameStatus(setup, board);
 	this->status->SetRunInteractions(setup.GetRunInteractions());
 	this->ppInteraction = PlayerPropertyInteraction(this->status);
 
@@ -52,12 +52,10 @@ void Game::Init(GameSetup& setup)
 	LOG("Json saved!");
 }
 
-bool Game::Turn(int verbose)
+bool Game::Turn()
 {
-
 	Report report = {};
-
-	if (verbose > 0) {
+	if (this->status->GetVerbose() > 0) {
 		//Display turn
 		for (const Player* p : this->status->GetPlayers()) {
 			if (p->IsOut()) continue;

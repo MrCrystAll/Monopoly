@@ -15,7 +15,7 @@ public:
 	Game(GameSetup& setup);
 
 	void Start();
-	bool Turn(int verbose = 0);
+	bool Turn();
 	bool PlayerTurn(Player& p, Report& r);
 
 private:

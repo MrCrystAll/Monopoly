@@ -9,7 +9,7 @@ TEST_CASE("Go interaction", PLAYER_INTERACTION_TAG) {
 	p->SetPosition(36);
 
 	GameSetup setup = GameSetup(
-		0, { p }, true
+		0, { p }, true, 1
 	);
 
 	Game g = Game(setup);

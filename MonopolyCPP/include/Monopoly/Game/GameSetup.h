@@ -4,10 +4,13 @@
 
 class GameSetup {
 public:
-	GameSetup(int nPlayers = 0, std::vector<Player*> players = {}, bool runInteractions = true);
+	GameSetup(int nPlayers = 0, std::vector<Player*> players = {}, bool runInteractions = true, int verbose = 0);
 
 	bool GetRunInteractions() const;
 	void SetRunInteractions(bool runInteractions);
+
+	int GetVerbose() const;
+	void SetVerbose(int verbose);
 
 	int GetNPlayers() const;
 
@@ -17,6 +20,7 @@ private:
 	bool runInteractions;
 	int nPlayers;
 	std::vector<Player*> players;
+	int verbose;
 
 	void PostInit();
 };

@@ -1,11 +1,11 @@
 #include <Monopoly/Game/GameStatus.h>
 
-GameStatus::GameStatus(std::vector<Player*> players, Board* board): finished(false), players(players), board(board)
+GameStatus::GameStatus(GameSetup& setup, Board* board): finished(false), setup(setup), board(board)
 {
 	this->turnStatus = new TurnStatus();
 	this->turnStatus->playerTurnsStatus = {};
 
-	for (const Player* p : players) {
+	for (const Player* p : setup.GetPlayers()) {
 		this->turnStatus->playerTurnsStatus[p->GetStamp()] = PlayerTurnStatus();
 	}
 }
@@ -17,7 +17,7 @@ bool GameStatus::IsFinished() const
 
 std::vector<Player*> GameStatus::GetPlayers() const
 {
-	return this->players;
+	return this->setup.GetPlayers();
 }
 
 Board* GameStatus::GetBoard() const
@@ -27,14 +27,14 @@ Board* GameStatus::GetBoard() const
 
 void GameStatus::Update()
 {
-	for (Player* p : this->players) {
+	for (Player* p : this->GetPlayers()) {
 
 		if (p->IsOut()) {
 			this->dead[p] = this->nTurns;
-			this->players.erase(std::remove(this->players.begin(), this->players.end(), p), this->players.end());
+			this->GetPlayers().erase(std::remove(this->GetPlayers().begin(), this->GetPlayers().end(), p), this->GetPlayers().end());
 		}
 	}
-	if (this->players.size() == 1) {
+	if (this->GetPlayers().size() == 1) {
 		this->finished = true;
 	}
 	this->nTurns++;
@@ -57,10 +57,20 @@ TurnStatus* GameStatus::GetTurnStatus() const
 
 bool GameStatus::GetRunInteractions() const
 {
-	return this->runInteractions;
+	return this->setup.GetRunInteractions();
 }
 
 void GameStatus::SetRunInteractions(bool runInteractions)
 {
-	this->runInteractions = runInteractions;
+	this->setup.SetRunInteractions(runInteractions);
+}
+
+int GameStatus::GetVerbose() const
+{
+	return this->setup.GetVerbose();
+}
+
+void GameStatus::SetVerbose(int verbose)
+{
+	this->setup.SetVerbose(verbose);
 }
