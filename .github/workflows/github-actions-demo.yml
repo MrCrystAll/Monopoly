@@ -18,6 +18,9 @@ jobs:
               cd build
               cmake -G Ninja ..
 
+      - name: List
+        run: ls -l
+
       - name: Cache
         uses: actions/cache@v4
         with:
