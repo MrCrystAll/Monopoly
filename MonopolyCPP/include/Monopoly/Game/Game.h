@@ -5,6 +5,9 @@
 #include <Monopoly/Interactions/PlayerPropertyInteraction.h>
 #include <nlohmann/json.hpp>
 
+#include <Monopoly/Game/GameSetup.h>
+#include <Monopoly/Game/GameStatus.h>
+
 using json = nlohmann::json;
 
 class Game {

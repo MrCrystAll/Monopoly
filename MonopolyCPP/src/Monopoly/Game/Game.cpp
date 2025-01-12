@@ -1,4 +1,4 @@
-#include <Monopoly/Game.h>
+#include <Monopoly/Game/Game.h>
 #include <iostream>
 #include <fstream>
 

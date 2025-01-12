@@ -3,9 +3,8 @@
 #include <vector>
 #include <map>
 #include <Monopoly/Players/Player.h>
-#include <Monopoly/Board.h>
-
 #include <Monopoly/Models/TurnStatus.h>
+#include <Monopoly/Board/Board.h>
 
 class GameStatus {
 public:
@@ -31,24 +30,4 @@ private:
 	TurnStatus* turnStatus;
 	Board* board;
 	int nTurns = 0;
-};
-
-
-class GameSetup{
-public:
-	GameSetup(int nPlayers = 0, std::vector<Player*> players = {}, bool runInteractions = true);
-
-	bool GetRunInteractions() const;
-	void SetRunInteractions(bool runInteractions);
-
-	int GetNPlayers() const;
-
-	std::vector<Player*> GetPlayers() const;
-
-private:
-	bool runInteractions;
-	int nPlayers;
-	std::vector<Player*> players;
-
-	void PostInit();
 };

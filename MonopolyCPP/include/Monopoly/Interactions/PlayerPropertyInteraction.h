@@ -3,7 +3,7 @@
 #include <string>
 #include <Monopoly/Players/Player.h>
 #include <Monopoly/Slots/Slot.h>
-#include <Monopoly/GameStatus.h>
+#include <Monopoly/Game/GameStatus.h>
 #include <Monopoly/Logging/Report.h>
 #include <Monopoly/Groups/Group.h>
 

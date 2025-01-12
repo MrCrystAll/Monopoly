@@ -1,4 +1,4 @@
-#include <Monopoly/Board.h>
+#include <Monopoly/Board/Board.h>
 #include <iostream>
 //#include <Monopoly/Groups/Group.h>
 
