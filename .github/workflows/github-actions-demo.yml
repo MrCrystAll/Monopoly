@@ -22,7 +22,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: build/_deps
-          key: ${{ runner.os }}-${{ hashFiles('**/build/_deps') }}
+          key: ${{ runner.os }}-deps
 
       - name: Build
         run: cmake --build build
