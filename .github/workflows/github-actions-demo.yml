@@ -18,6 +18,13 @@ jobs:
               cd build
               cmake -G Ninja ..
 
+      - name: Set up cache
+        uses: actions/cache@v4
+        with:
+          path: _deps
+          key: ${{ runner.os }}.tests.${{ hashFiles('**/') }}
+          restore-keys: ${{ runner.os }}.tests.
+
       - name: Build
         run: cmake --build build
 
