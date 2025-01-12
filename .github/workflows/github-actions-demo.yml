@@ -22,7 +22,9 @@ jobs:
             build/_deps
             build/CMakeCache.txt
             build/CMakeFiles
-          key: ${{ runner.os }}-deps
+          key: ${{ runner.os }}-cmake-deps-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-cmake-deps-
         
       - name: Generate build files
         run: |
