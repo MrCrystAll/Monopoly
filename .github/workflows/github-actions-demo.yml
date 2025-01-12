@@ -32,7 +32,7 @@ jobs:
               cmake -G Ninja ..
 
       - name: Build
-        run: cmake --build build
+        run: cmake --trace --build build
 
       - name: Test Project
         uses: threeal/ctest-action@v1.1.0
