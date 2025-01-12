@@ -16,7 +16,7 @@ DiceResult Player::Roll() const
 	return { dice1 + dice2, d };
 }
 
-const int Player::Ask(std::vector<Choice> choices, std::string question)
+int Player::Ask(std::vector<Choice> choices, std::string question) const
 {
 	/*if (not question.empty()) {
 		LOG(question);
