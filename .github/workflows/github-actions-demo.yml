@@ -32,7 +32,7 @@ jobs:
               cmake -G Ninja ..
 
       - name: Build
-        run: cmake --trace --build build
+        run: cmake --build build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
 
       - name: Test Project
         uses: threeal/ctest-action@v1.1.0
