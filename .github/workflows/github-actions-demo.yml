@@ -11,12 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: seanmiddleditch/gha-setup-ninja@master
-        
-      - name: Generate build files
-        run: |
-            mkdir build
-              cd build
-              cmake -G Ninja ..
+
+      - run: |
+          mkdir build
 
       - name: Cache
         uses: actions/cache@v4
@@ -26,6 +23,11 @@ jobs:
             build/CMakeCache.txt
             build/CMakeFiles
           key: ${{ runner.os }}-deps
+        
+      - name: Generate build files
+        run: |
+              cd build
+              cmake -G Ninja ..
 
       - name: Build
         run: cmake --build build
